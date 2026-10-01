@@ -134,9 +134,32 @@ function Home({ lang, navigate }: { lang: Language; navigate: (path: string) => 
 function SyllabusPage({ lang, path, navigate }: { lang: Language; path: string; navigate: (path: string) => void }) {
   const t = copy[lang];
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<"all" | WorkType>("all");
-  const section = syllabus.find((item) => item.slug === path.split("/")[2]);
-  const partNumber = Number(path.split("/")[3]?.replace("part-", ""));
+  const getFilterFromUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    const f = params.get("filter");
+    return (f === "ghazal" || f === "nazm" || f === "afsana") ? f : "all";
+  };
+  const [filter, setFilterState] = useState<"all" | WorkType>(getFilterFromUrl);
+
+  useEffect(() => {
+    setFilterState(getFilterFromUrl());
+  }, [path]);
+
+  const setFilter = (nextFilter: "all" | WorkType) => {
+    setFilterState(nextFilter);
+    const url = new URL(window.location.href);
+    if (nextFilter === "all") {
+      url.searchParams.delete("filter");
+    } else {
+      url.searchParams.set("filter", nextFilter);
+    }
+    window.history.replaceState({}, "", url.pathname + url.search);
+  };
+
+  const sectionSlug = (path.split("/")[2] || "").split("?")[0];
+  const section = syllabus.find((item) => item.slug === sectionSlug);
+  const partSlug = (path.split("/")[3] || "").split("?")[0];
+  const partNumber = Number(partSlug.replace("part-", ""));
   const selectedPart = section?.parts.find((part) => part.number === partNumber);
   const normalized = query.trim().toLocaleLowerCase();
   const matches = useMemo(() => allWorks.filter(({ item, author }) => {
@@ -144,27 +167,62 @@ function SyllabusPage({ lang, path, navigate }: { lang: Language; path: string; 
     return (!normalized || text.includes(normalized)) && (filter === "all" || item.type === filter);
   }), [normalized, filter]);
   const filters: Array<["all" | WorkType, string]> = [["all", t.all], ["ghazal", t.ghazal], ["nazm", t.nazm], ["afsana", t.afsana]];
+  const openWork = (slug: string, type: WorkType) => {
+    const currentFilter = filter !== "all" ? filter : type;
+    navigate(`/work/${slug}?filter=${currentFilter}`);
+  };
+
   return <main className="page-main">
     <section className="page-intro"><span className="section-kicker">{t.syllabus}</span><h1>{section ? section.title[lang] : t.sections}</h1><p>{section ? section.description[lang] : t.intro}</p></section>
     <section>
-      <div className="search-panel"><label htmlFor="syllabus-search">{t.searchLabel}</label><div className="search-field"><Icon name="search"/><input id="syllabus-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t.search}/></div><div className="filters">{filters.map(([value, label]) => <button key={value} className={filter === value ? "active" : ""} onClick={() => setFilter(value)}>{label}</button>)}</div></div>
-      {(query || filter !== "all") ? <SearchResults lang={lang} matches={matches} navigate={navigate}/> :
+      <div className="search-panel"><label htmlFor="syllabus-search">{t.searchLabel}</label><div className="search-field"><Icon name="search"/><input id="syllabus-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t.search}/></div><div className="filters">{filters.map(([value, label]) => <button key={value} data-type={value} className={filter === value ? "active" : ""} onClick={() => setFilter(value)}>{label}</button>)}</div></div>
+      {query ? <SearchResults lang={lang} matches={matches} navigate={navigate} currentFilter={filter}/> :
       !section ? <SectionCards lang={lang} navigate={navigate}/> :
-      <><div className="part-tabs"><button className={!selectedPart ? "active" : ""} onClick={() => navigate(`/syllabus/${section.slug}`)}>{t.all}</button>{section.parts.map((part) => <button key={part.number} className={selectedPart?.number === part.number ? "active" : ""} onClick={() => navigate(`/syllabus/${section.slug}/part-${part.number}`)}>{t.part} {part.number}</button>)}</div>
-      <div className="parts-list">{(selectedPart ? [selectedPart] : section.parts).map((part) =>
-        <section className="part-section" key={part.number}><div className="part-heading"><span>{String(part.number).padStart(2, "0")}</span><h2>{t.part} {part.number}</h2><i></i></div>
-          <div className="authors-grid">{part.authors.map((author) => <article className="author-group" key={author.name.roman}><h3>{author.name[lang]}</h3><div className="works-list">{author.works.map((work) =>
-            <button key={work.slug} className="work-row" onClick={() => navigate(`/work/${work.slug}`)}><span className="file-icon"><Icon name="file"/></span><span className="work-title">{work.title[lang]}</span>{work.year && <span className="year">{work.year}</span>}<Icon name="chevron"/></button>)}</div></article>)}</div>
-        </section>)}</div></>}
+      <><div className="part-tabs"><button className={!selectedPart ? "active" : ""} onClick={() => navigate(`/syllabus/${section.slug}${filter !== "all" ? `?filter=${filter}` : ""}`)}>{t.all}</button>{section.parts.map((part) => <button key={part.number} className={selectedPart?.number === part.number ? "active" : ""} onClick={() => navigate(`/syllabus/${section.slug}/part-${part.number}${filter !== "all" ? `?filter=${filter}` : ""}`)}>{t.part} {part.number}</button>)}</div>
+      <div className="parts-list">{(selectedPart ? [selectedPart] : section.parts).map((part) => {
+        const authorsWithWorks = part.authors.map((author) => ({
+          author,
+          works: author.works.filter((w) => filter === "all" || w.type === filter)
+        })).filter((group) => group.works.length > 0);
+
+        if (authorsWithWorks.length === 0) return null;
+
+        return (
+          <section className="part-section" key={part.number}>
+            <div className="part-heading"><span>{String(part.number).padStart(2, "0")}</span><h2>{t.part} {part.number}</h2><i></i></div>
+            <div className="authors-grid">
+              {authorsWithWorks.map(({ author, works }) => (
+                <article className="author-group" key={author.name.roman}>
+                  <h3>{author.name[lang]}</h3>
+                  <div className="works-list">
+                    {works.map((work) => (
+                      <button key={work.slug} className={`work-row type-${work.type}`} onClick={() => openWork(work.slug, work.type)}>
+                        <span className="file-icon"><Icon name="file"/></span>
+                        <span className="work-title">{work.title[lang]}</span>
+                        {work.year && <span className="year">{work.year}</span>}
+                        <Icon name="chevron"/>
+                      </button>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        );
+      })}</div></>}
     </section>
   </main>;
 }
 
-function SearchResults({ lang, matches, navigate }: { lang: Language; matches: typeof allWorks; navigate: (path: string) => void }) {
+function SearchResults({ lang, matches, navigate, currentFilter }: { lang: Language; matches: typeof allWorks; navigate: (path: string) => void; currentFilter?: "all" | WorkType }) {
   const t = copy[lang];
+  const openWork = (slug: string, type: WorkType) => {
+    const activeFilter = currentFilter && currentFilter !== "all" ? currentFilter : type;
+    navigate(`/work/${slug}?filter=${activeFilter}`);
+  };
   return <div><div className="results-head"><h2>{t.results}</h2><span>{matches.length}</span></div>
     {matches.length ? <div className="search-results">{matches.map(({ item, author, section, part }) =>
-      <button key={item.slug} onClick={() => navigate(`/work/${item.slug}`)} className="result-row"><span className="file-icon"><Icon name="file"/></span><span className="result-copy"><strong>{item.title[lang]}</strong><small>{author.name[lang]} · {t.section} {section.number} · {t.part} {part.number}</small></span>{item.year && <span className="year">{item.year}</span>}<Icon name="chevron"/></button>)}</div>
+      <button key={item.slug} onClick={() => openWork(item.slug, item.type)} className={`result-row type-${item.type}`}><span className="file-icon"><Icon name="file"/></span><span className="result-copy"><strong>{item.title[lang]}</strong><small>{author.name[lang]} · {t.section} {section.number} · {t.part} {part.number}</small></span>{item.year && <span className="year">{item.year}</span>}<Icon name="chevron"/></button>)}</div>
     : <div className="empty-state"><Icon name="search" size={28}/><strong>{t.noResults}</strong><p>{t.noResultsSub}</p></div>}
   </div>;
 }
@@ -174,8 +232,13 @@ function PdfPage({ lang, slug, navigate }: { lang: Language; slug: string; navig
   const found = allWorks.find(({ item }) => item.slug === slug);
   if (!found) return <main className="page-main"><div className="empty-state"><strong>{t.noResults}</strong></div></main>;
   const { item, author, section, part } = found;
-  return <main className="page-main pdf-page">
-    <button className="back-link" onClick={() => navigate(`/syllabus/${section.slug}/part-${part.number}`)}><Icon name="arrow"/>{t.back}</button>
+  const goBack = () => {
+    const params = new URLSearchParams(window.location.search);
+    const returnFilter = params.get("filter") || item.type;
+    navigate(`/syllabus/${section.slug}/part-${part.number}?filter=${returnFilter}`);
+  };
+  return <main className={`page-main pdf-page type-${item.type}`}>
+    <button className="back-link" onClick={goBack}><Icon name="arrow"/>{t.back}</button>
     <section className="pdf-title"><span className="section-kicker">{section.title[lang]} · {t.part} {part.number}</span><h1>{item.title[lang]}</h1><div className="meta-row"><span>{item.type === "afsana" ? t.author : t.poet}: <strong>{author.name[lang]}</strong></span>{item.year && <span>{t.syllabusYear}: <strong>{item.year}</strong></span>}</div></section>
     <section className="viewer-card"><div className="viewer-toolbar"><div><Icon name="file"/><span><strong>{t.pdfViewer}</strong><small>{t.pdfNote}</small></span></div><div className="viewer-actions"><a href={item.pdf} target="_blank" rel="noreferrer" className="primary-button"><Icon name="file"/>{t.viewPdf}</a></div></div>
       <object className="pdf-object" data={item.pdf} type="application/pdf"><div className="pdf-fallback"><Icon name="file" size={32}/><p>{t.pdfNote}</p><a className="primary-button" href={item.pdf} target="_blank" rel="noreferrer">{t.viewPdf}</a></div></object>
@@ -187,12 +250,13 @@ export default function App() {
   const { path, navigate } = useRoute();
   const [lang, setLangState] = useState<Language>(() => localStorage.getItem("urdu9866-language") === "ur" ? "ur" : "roman");
   const setLang = (next: Language) => { setLangState(next); localStorage.setItem("urdu9866-language", next); };
+  const workSlug = path.startsWith("/work/") ? (path.split("/")[2] || "").split("?")[0] : "";
   useEffect(() => {
     document.documentElement.lang = "en";
     document.documentElement.dir = "ltr";
-    const found = path.startsWith("/work/") ? allWorks.find(({ item }) => item.slug === path.split("/")[2]) : null;
+    const found = workSlug ? allWorks.find(({ item }) => item.slug === workSlug) : null;
     document.title = `${found ? found.item.title[lang] : path.startsWith("/syllabus") ? copy[lang].syllabus : copy[lang].home} | Urdu 9866`;
-  }, [lang, path]);
-  const page = path.startsWith("/work/") ? <PdfPage lang={lang} slug={path.split("/")[2]} navigate={navigate}/> : path.startsWith("/syllabus") ? <SyllabusPage lang={lang} path={path} navigate={navigate}/> : <Home lang={lang} navigate={navigate}/>;
+  }, [lang, path, workSlug]);
+  const page = workSlug ? <PdfPage lang={lang} slug={workSlug} navigate={navigate}/> : path.startsWith("/syllabus") ? <SyllabusPage lang={lang} path={path} navigate={navigate}/> : <Home lang={lang} navigate={navigate}/>;
   return <div className={`app ${lang === "ur" ? "urdu" : "roman"}`}><Header lang={lang} setLang={setLang} path={path} navigate={navigate}/>{page}<Footer lang={lang} navigate={navigate}/></div>;
 }

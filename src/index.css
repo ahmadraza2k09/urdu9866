@@ -125,6 +125,25 @@ main { flex: 1; }
 .work-row, .result-row { width: 100%; min-height: 61px; display: flex; align-items: center; gap: 11px; padding: 9px 12px; text-align: start; border: 1px solid #e7ebe8; border-radius: 10px; background: var(--paper); cursor: pointer; transition: background .18s, border .18s; }
 .work-row:hover, .result-row:hover { background: var(--accent-soft); border-color: #c6dbd0; }
 .file-icon { flex: 0 0 auto; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 8px; color: var(--accent); background: var(--accent-soft); }
+
+/* Document Type Color Shades */
+.type-afsana .file-icon { color: #1d4ed8; background: #eff6ff; }
+.type-afsana:hover { background: #f0f7ff; border-color: #bfdbfe; }
+.type-afsana.pdf-page .viewer-toolbar svg, .type-afsana.pdf-page .back-link { color: #1d4ed8; }
+.type-afsana.pdf-page .primary-button { background: #1d4ed8; }
+.type-afsana.pdf-page .primary-button:hover { background: #1e40af; }
+.filters button[data-type="afsana"].active { background: #1d4ed8; border-color: #1d4ed8; }
+
+.type-ghazal .file-icon { color: #dc2626; background: #fef2f2; }
+.type-ghazal:hover { background: #fff5f5; border-color: #fca5a5; }
+.type-ghazal.pdf-page .viewer-toolbar svg, .type-ghazal.pdf-page .back-link { color: #dc2626; }
+.type-ghazal.pdf-page .primary-button { background: #dc2626; }
+.type-ghazal.pdf-page .primary-button:hover { background: #b91c1c; }
+.filters button[data-type="ghazal"].active { background: #dc2626; border-color: #dc2626; }
+
+.type-nazm .file-icon { color: var(--accent); background: var(--accent-soft); }
+.type-nazm:hover { background: var(--accent-soft); border-color: #c6dbd0; }
+.filters button[data-type="nazm"].active { background: var(--accent); border-color: var(--accent); }
 .work-title { flex: 1; font-size: 14px; line-height: 1.8; font-weight: 500; }
 .roman .work-title { line-height: 1.4; }
 .work-row > svg, .result-row > svg { flex: 0 0 auto; width: 16px; color: #93a09a; }

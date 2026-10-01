@@ -42,8 +42,8 @@ export const syllabus: Section[] = [
         ] },
         { name: { ur: "علامہ محمد اقبال", roman: "Allama Muhammad Iqbal" }, works: [
           w("sarmaya-o-mehnat", "سرمایہ و محنت", "Sarmaya-o-Mehnat", "nazm", "https://drive.google.com/file/d/1fEgEaB3B0XmJMuN_2ay4mzT5YhXWt164/view?usp=sharing"),
-          w("phool", "پھول", "Phool", "nazm", pdf(1, 1, "iqbal", "phool")),
-          w("shama-parwana", "شمع پروانہ", "Shama Parwana", "nazm", pdf(1, 1, "iqbal", "shama-parwana")),
+          w("phool", "پھول", "Phool", "nazm", "https://drive.google.com/file/d/1sVuMLmvS7qbrlvXFoFShNZ-R4g9c4-Vg/view?usp=sharing"),
+          w("shama-parwana", "شمع پروانہ", "Shama Parwana", "nazm", "https://drive.google.com/file/d/1qHYQXBmWd9X-gIgvu6xeX2x-fyw11h2g/view?usp=sharing"),
         ] },
       ] },
       { number: 2, authors: [
