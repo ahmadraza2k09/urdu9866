@@ -41,7 +41,7 @@ export const syllabus: Section[] = [
           w("bas-ke-dushwar", "بس کہ دشوار ہے ہر کام کا آسان ہونا", "Bas ke dushwar hai har kaam ka aasaan hona", "ghazal", pdf(1, 1, "ghalib", "bas-ke-dushwar")),
         ] },
         { name: { ur: "علامہ محمد اقبال", roman: "Allama Muhammad Iqbal" }, works: [
-          w("sarmaya-o-mehnat", "سرمایہ و محنت", "Sarmaya-o-Mehnat", "nazm", pdf(1, 1, "iqbal", "sarmaya-o-mehnat")),
+          w("sarmaya-o-mehnat", "سرمایہ و محنت", "Sarmaya-o-Mehnat", "nazm", "https://drive.google.com/file/d/1fEgEaB3B0XmJMuN_2ay4mzT5YhXWt164/view?usp=sharing"),
           w("phool", "پھول", "Phool", "nazm", pdf(1, 1, "iqbal", "phool")),
           w("shama-parwana", "شمع پروانہ", "Shama Parwana", "nazm", pdf(1, 1, "iqbal", "shama-parwana")),
         ] },

@@ -20,28 +20,28 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
 
 const copy = {
   ur: {
-    home: "گھر", syllabus: "نصاب", about: "ہمارے بارے میں",
-    intro: "اردو کے اہم اسباق، غزلیں، نظمیں اور افسانے ایک جگہ",
-    introSub: "منتخب نصابی مواد، خوب صورت ترتیب اور آسان رسائی کے ساتھ۔",
-    browse: "موضوعات دیکھیں", sections: "نصاب کے حصے", section: "سیکشن", part: "حصہ", search: "موضوع، شاعر یا مصنف تلاش کریں", searchLabel: "نصاب میں تلاش کریں",
-    all: "تمام", ghazal: "غزلیں", nazm: "نظمیں", afsana: "افسانے", results: "تلاش کے نتائج", noResults: "کوئی نتیجہ نہیں ملا", noResultsSub: "دوسرے الفاظ سے تلاش کریں یا فلٹر تبدیل کریں۔",
-    author: "مصنف", poet: "شاعر", syllabusYear: "نصاب", pdfViewer: "PDF مطالعہ", download: "PDF ڈاؤن لوڈ کریں", back: "واپس جائیں", openPdf: "PDF نئی ونڈو میں کھولیں",
-    pdfNote: "PDF کو براہ راست پڑھیں یا اپنے آلے پر محفوظ کریں۔", aboutTitle: "Urdu9866 کے بارے میں",
-    aboutBody: "Urdu9866 ایک سادہ تعلیمی ویب سائٹ ہے جس کا مقصد اردو کے منتخب اسباق، غزلوں، نظموں اور افسانوں کو PDF کی صورت میں ایک جگہ منظم کرنا ہے تاکہ طلبہ اور اساتذہ انہیں آسانی سے دیکھ اور ڈاؤن لوڈ کر سکیں۔",
-    aboutPoints: ["آسان اور تیز رسائی", "موبائل پر مطالعے کے لیے موزوں", "منظم اور قابلِ اعتماد نصابی مواد"],
-    footer: "اردو کے تعلیمی مواد کو آسان اور منظم انداز میں قابل رسائی بنانے کے لیے۔", library: "آپ کی ذاتی اردو لائبریری",
+    home: "Home", syllabus: "Syllabus", about: "About",
+    intro: "Urdu lessons, ghazals, poems, and stories all in one place",
+    introSub: "Curated syllabus content with beautiful layout and easy access.",
+    browse: "Explore Topics", sections: "Syllabus Sections", section: "Section", part: "Part", search: "Search topic, poet, or author...", searchLabel: "Search in Syllabus",
+    all: "All", ghazal: "Ghazals", nazm: "Poems", afsana: "Stories", results: "Search Results", noResults: "No results found", noResultsSub: "Try searching with different keywords or change filter.",
+    author: "Author", poet: "Poet", syllabusYear: "Syllabus", pdfViewer: "PDF Reader", viewPdf: "View PDF", download: "Download PDF", back: "Back", openPdf: "Open PDF in New Window",
+    pdfNote: "Read PDF directly or save it to your device.", aboutTitle: "About Urdu 9866",
+    aboutBody: "Urdu 9866 is a clean educational portal designed to organize selected Urdu lessons, ghazals, poems, and stories in PDF format in one place for easy access for students and teachers.",
+    aboutPoints: ["Fast & easy access", "Optimized for mobile reading", "Organized and reliable syllabus content"],
+    footer: "Making Urdu educational content easily accessible and beautifully organized.", library: "Your Personal Urdu Library",
   },
   roman: {
-    home: "Ghar", syllabus: "Nisaab", about: "Hamaray Baray Mein",
-    intro: "Urdu ke aham sabaq, ghazlain, nazmain aur afsanay aik jagah",
-    introSub: "Muntakhib nisaabi mawaad, khoobsurat tarteeb aur aasaan rasai ke saath.",
-    browse: "Mauzuaat Dekhein", sections: "Nisaab ke Hissay", section: "Section", part: "Part", search: "Mauzu, shair ya musannif talash karein", searchLabel: "Nisaab mein talash karein",
-    all: "Tamam", ghazal: "Ghazlain", nazm: "Nazmain", afsana: "Afsanay", results: "Talash ke Nataij", noResults: "Koi natija nahin mila", noResultsSub: "Doosray alfaaz se talash karein ya filter tabdeel karein.",
-    author: "Musannif", poet: "Shair", syllabusYear: "Nisaab", pdfViewer: "PDF Mutalia", download: "PDF Download Karein", back: "Wapas Jayein", openPdf: "PDF Nai Window Mein Kholein",
-    pdfNote: "PDF ko barah-e-rast parhein ya apne aalay par mehfooz karein.", aboutTitle: "Urdu9866 ke Baray Mein",
-    aboutBody: "Urdu9866 aik sada taleemi website hai jis ka maqsad Urdu ke muntakhib asbaaq, ghazlon, nazmon aur afsanon ko PDF ki surat mein aik jagah munazzam karna hai taa ke talaba aur asatiza inhein aasani se dekh aur download kar saken.",
-    aboutPoints: ["Aasaan aur taiz rasai", "Mobile par mutaliay ke liye mauzoon", "Munazzam aur qabil-e-aitemad nisaabi mawaad"],
-    footer: "Urdu ke taleemi mawaad ko aasaan aur munazzam andaaz mein qabil-e-rasai banane ke liye.", library: "Aap ki zaati Urdu library",
+    home: "Home", syllabus: "Syllabus", about: "About",
+    intro: "Urdu lessons, ghazals, poems, and stories all in one place",
+    introSub: "Curated syllabus content with beautiful layout and easy access.",
+    browse: "Explore Topics", sections: "Syllabus Sections", section: "Section", part: "Part", search: "Search topic, poet, or author...", searchLabel: "Search in Syllabus",
+    all: "All", ghazal: "Ghazals", nazm: "Poems", afsana: "Stories", results: "Search Results", noResults: "No results found", noResultsSub: "Try searching with different keywords or change filter.",
+    author: "Author", poet: "Poet", syllabusYear: "Syllabus", pdfViewer: "PDF Reader", viewPdf: "View PDF", download: "Download PDF", back: "Back", openPdf: "Open PDF in New Window",
+    pdfNote: "Read PDF directly or save it to your device.", aboutTitle: "About Urdu 9866",
+    aboutBody: "Urdu 9866 is a clean educational portal designed to organize selected Urdu lessons, ghazals, poems, and stories in PDF format in one place for easy access for students and teachers.",
+    aboutPoints: ["Fast & easy access", "Optimized for mobile reading", "Organized and reliable syllabus content"],
+    footer: "Making Urdu educational content easily accessible and beautifully organized.", library: "Your Personal Urdu Library",
   },
 };
 
@@ -63,20 +63,20 @@ function useRoute() {
 function Header({ lang, setLang, path, navigate }: { lang: Language; setLang: (lang: Language) => void; path: string; navigate: (path: string) => void }) {
   const [open, setOpen] = useState(false);
   const t = copy[lang];
-  const links = [{ label: t.home, path: "/", icon: "home" as IconName }, { label: t.syllabus, path: "/syllabus", icon: "book" as IconName }, { label: t.about, path: "/about", icon: "info" as IconName }];
+  const links = [{ label: t.home, path: "/", icon: "home" as IconName }, { label: t.syllabus, path: "/syllabus", icon: "book" as IconName }];
   const go = (next: string) => { navigate(next); setOpen(false); };
   const isActive = (next: string) => path === next || (next !== "/" && path.startsWith(next));
   return (
     <header className="site-header">
       <div className="header-inner">
-        <button className="brand" onClick={() => go("/")} aria-label="Urdu9866"><span className="brand-mark">اُ</span><span>Urdu<span>9866</span></span></button>
+        <button className="brand" onClick={() => go("/")} aria-label="Urdu 9866"><span className="brand-mark">اُ</span><span>Urdu <span>9866</span></span></button>
         <nav className="desktop-nav" aria-label={t.syllabus}>
           {links.map((link) => <button key={link.path} className={`nav-link ${isActive(link.path) ? "active" : ""}`} onClick={() => go(link.path)}>{link.label}</button>)}
         </nav>
         <div className="header-actions">
           <div className="language-switch" aria-label="Language">
-            <button className={lang === "ur" ? "selected" : ""} onClick={() => setLang("ur")}>اردو</button><i></i>
-            <button className={lang === "roman" ? "selected" : ""} onClick={() => setLang("roman")}>Roman Urdu</button>
+            <button className={lang === "ur" ? "selected" : ""} onClick={() => setLang("ur")}>Urdu</button><i></i>
+            <button className={lang === "roman" ? "selected" : ""} onClick={() => setLang("roman")}>Roman</button>
           </div>
           <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Menu" aria-expanded={open}><Icon name={open ? "close" : "menu"} /></button>
         </div>
@@ -88,7 +88,26 @@ function Header({ lang, setLang, path, navigate }: { lang: Language; setLang: (l
 
 function Footer({ lang, navigate }: { lang: Language; navigate: (path: string) => void }) {
   const t = copy[lang];
-  return <footer><div className="footer-inner"><div><div className="footer-brand">Urdu9866</div><p>{t.footer}</p></div><div className="footer-links"><button onClick={() => navigate("/")}>{t.home}</button><button onClick={() => navigate("/syllabus")}>{t.syllabus}</button><button onClick={() => navigate("/about")}>{t.about}</button></div></div><div className="copyright">© 2026 Urdu9866</div></footer>;
+  return (
+    <footer>
+      <div className="footer-inner">
+        <div>
+          <div className="footer-brand">Urdu 9866</div>
+          <p>{t.footer}</p>
+        </div>
+        <div className="footer-links">
+          <button onClick={() => navigate("/")}>{t.home}</button>
+          <button onClick={() => navigate("/syllabus")}>{t.syllabus}</button>
+        </div>
+      </div>
+      <div className="copyright">
+        © 2026 Urdu 9866 · Made by{" "}
+        <a href="https://link.me/ahmad.raza" target="_blank" rel="noopener noreferrer">
+          Muhammad Ahmad Raza
+        </a>
+      </div>
+    </footer>
+  );
 }
 
 function SectionCards({ lang, navigate }: { lang: Language; navigate: (path: string) => void }) {
@@ -105,7 +124,7 @@ function Home({ lang, navigate }: { lang: Language; navigate: (path: string) => 
   const t = copy[lang];
   return <main>
     <section className="hero">
-      <div className="hero-copy"><span className="eyebrow"><i></i>{t.library}</span><h1>Urdu<span>9866</span></h1><p className="hero-lead">{t.intro}</p><p className="hero-sub">{t.introSub}</p><button className="primary-button" onClick={() => navigate("/syllabus")}>{t.browse}<Icon name="arrow"/></button></div>
+      <div className="hero-copy"><span className="eyebrow">{t.library}</span><h1>Urdu <span>9866</span></h1><p className="hero-lead">{t.intro}</p><p className="hero-sub">{t.introSub}</p><button className="primary-button" onClick={() => navigate("/syllabus")}>{t.browse}<Icon name="arrow"/></button></div>
       <div className="hero-motif" aria-hidden="true"><div className="motif-ring"><span>علم</span></div><div className="motif-card motif-one">غزل</div><div className="motif-card motif-two">افسانہ</div></div>
     </section>
     <section className="section-wrap home-sections"><div className="section-heading"><div><span className="section-kicker">{t.syllabus}</span><h2>{t.sections}</h2></div><span className="section-count">02</span></div><SectionCards lang={lang} navigate={navigate}/></section>
@@ -158,27 +177,22 @@ function PdfPage({ lang, slug, navigate }: { lang: Language; slug: string; navig
   return <main className="page-main pdf-page">
     <button className="back-link" onClick={() => navigate(`/syllabus/${section.slug}/part-${part.number}`)}><Icon name="arrow"/>{t.back}</button>
     <section className="pdf-title"><span className="section-kicker">{section.title[lang]} · {t.part} {part.number}</span><h1>{item.title[lang]}</h1><div className="meta-row"><span>{item.type === "afsana" ? t.author : t.poet}: <strong>{author.name[lang]}</strong></span>{item.year && <span>{t.syllabusYear}: <strong>{item.year}</strong></span>}</div></section>
-    <section className="viewer-card"><div className="viewer-toolbar"><div><Icon name="file"/><span><strong>{t.pdfViewer}</strong><small>{t.pdfNote}</small></span></div><div className="viewer-actions"><a href={item.pdf} target="_blank" rel="noreferrer" className="secondary-button">{t.openPdf}</a><a href={item.pdf} download className="primary-button"><Icon name="download"/>{t.download}</a></div></div>
-      <object className="pdf-object" data={item.pdf} type="application/pdf"><div className="pdf-fallback"><Icon name="file" size={32}/><p>{t.pdfNote}</p><a className="primary-button" href={item.pdf} target="_blank" rel="noreferrer">{t.openPdf}</a></div></object>
+    <section className="viewer-card"><div className="viewer-toolbar"><div><Icon name="file"/><span><strong>{t.pdfViewer}</strong><small>{t.pdfNote}</small></span></div><div className="viewer-actions"><a href={item.pdf} target="_blank" rel="noreferrer" className="primary-button"><Icon name="file"/>{t.viewPdf}</a></div></div>
+      <object className="pdf-object" data={item.pdf} type="application/pdf"><div className="pdf-fallback"><Icon name="file" size={32}/><p>{t.pdfNote}</p><a className="primary-button" href={item.pdf} target="_blank" rel="noreferrer">{t.viewPdf}</a></div></object>
     </section>
   </main>;
 }
 
-function About({ lang }: { lang: Language }) {
-  const t = copy[lang];
-  return <main className="page-main about-page"><section className="about-card"><div className="about-monogram">اُ</div><div className="about-copy"><span className="section-kicker">Urdu9866</span><h1>{t.aboutTitle}</h1><p>{t.aboutBody}</p><div className="about-points">{t.aboutPoints.map((point, index) => <div key={point}><span>0{index + 1}</span>{point}</div>)}</div></div></section></main>;
-}
-
 export default function App() {
   const { path, navigate } = useRoute();
-  const [lang, setLangState] = useState<Language>(() => localStorage.getItem("urdu9866-language") === "roman" ? "roman" : "ur");
+  const [lang, setLangState] = useState<Language>(() => localStorage.getItem("urdu9866-language") === "ur" ? "ur" : "roman");
   const setLang = (next: Language) => { setLangState(next); localStorage.setItem("urdu9866-language", next); };
   useEffect(() => {
-    document.documentElement.lang = lang === "ur" ? "ur" : "en";
-    document.documentElement.dir = lang === "ur" ? "rtl" : "ltr";
+    document.documentElement.lang = "en";
+    document.documentElement.dir = "ltr";
     const found = path.startsWith("/work/") ? allWorks.find(({ item }) => item.slug === path.split("/")[2]) : null;
-    document.title = `${found ? found.item.title[lang] : path === "/about" ? copy[lang].about : path.startsWith("/syllabus") ? copy[lang].syllabus : copy[lang].home} | Urdu9866`;
+    document.title = `${found ? found.item.title[lang] : path.startsWith("/syllabus") ? copy[lang].syllabus : copy[lang].home} | Urdu 9866`;
   }, [lang, path]);
-  const page = path.startsWith("/work/") ? <PdfPage lang={lang} slug={path.split("/")[2]} navigate={navigate}/> : path.startsWith("/syllabus") ? <SyllabusPage lang={lang} path={path} navigate={navigate}/> : path === "/about" ? <About lang={lang}/> : <Home lang={lang} navigate={navigate}/>;
+  const page = path.startsWith("/work/") ? <PdfPage lang={lang} slug={path.split("/")[2]} navigate={navigate}/> : path.startsWith("/syllabus") ? <SyllabusPage lang={lang} path={path} navigate={navigate}/> : <Home lang={lang} navigate={navigate}/>;
   return <div className={`app ${lang === "ur" ? "urdu" : "roman"}`}><Header lang={lang} setLang={setLang} path={path} navigate={navigate}/>{page}<Footer lang={lang} navigate={navigate}/></div>;
 }
