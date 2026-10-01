@@ -48,9 +48,9 @@ export const syllabus: Section[] = [
       ] },
       { number: 2, authors: [
         { name: { ur: "فیض احمد فیض", roman: "Faiz Ahmed Faiz" }, works: [
-          w("nisar-main-teri-galiyon", "نثار میں تیری گلیوں کے اے وطن", "Nisar main teri galiyon ke ae watan", "nazm", pdf(1, 2, "faiz", "nisar-main-teri-galiyon")),
-          w("mauzu-e-sukhan", "موضوع سخن", "Mauzu-e-Sukhan", "nazm", pdf(1, 2, "faiz", "mauzu-e-sukhan")),
-          w("tauq-dar-ka-mausam", "طوق دار کا موسم", "Tauq-e-dar ka mausam", "nazm", pdf(1, 2, "faiz", "tauq-dar-ka-mausam")),
+          w("nisar-main-teri-galiyon", "نثار میں تیری گلیوں کے اے وطن", "Nisar main teri galiyon ke ae watan", "nazm", "https://drive.google.com/file/d/1ytJvvDquHaFz8_EY8UCcwPVKhGLEyBNv/view?usp=sharing"),
+          w("mauzu-e-sukhan", "موضوع سخن", "Mauzu-e-Sukhan", "nazm", "https://drive.google.com/file/d/1xPgl7tetrASCaQ1xBFdj9-RuVuT5X_pq/view?usp=sharing"),
+          w("tauq-dar-ka-mausam", "طوق دار کا موسم", "Tauq-e-dar ka mausam", "nazm", "https://drive.google.com/file/d/1hTfwGFgxyL2yyUEUtO6cDcbZxSXplUae/view?usp=sharing"),
         ] },
         { name: { ur: "پروین شاکر", roman: "Parveen Shakir" }, works: [
           w("pa-ba-gil", "پابہ گل سب ہیں رہائی کی کرے تدبیر کون", "Pa-ba-gil sab hain, rihai ki kare tadbeer kaun", "ghazal", pdf(1, 2, "parveen-shakir", "pa-ba-gil")),

@@ -3,19 +3,19 @@ import { allWorks, syllabus, type Language, type WorkType } from "./syllabus";
 
 type IconName = "arrow" | "book" | "chevron" | "close" | "download" | "file" | "home" | "info" | "menu" | "search";
 const iconPaths: Record<IconName, ReactNode> = {
-  arrow: <><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></>,
-  book: <><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></>,
-  chevron: <path d="m9 18 6-6-6-6"/>,
-  close: <><path d="m18 6-12 12"/><path d="m6 6 12 12"/></>,
-  download: <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></>,
-  file: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></>,
-  home: <><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></>,
-  info: <><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></>,
-  menu: <><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></>,
-  search: <><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></>,
+  arrow: <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/>,
+  book: <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>,
+  chevron: <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>,
+  close: <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>,
+  download: <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>,
+  file: <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>,
+  home: <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/>,
+  info: <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>,
+  menu: <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>,
+  search: <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>,
 };
 function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
-  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{iconPaths[name]}</svg>;
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">{iconPaths[name]}</svg>;
 }
 
 const copy = {
@@ -124,7 +124,7 @@ function Home({ lang, navigate }: { lang: Language; navigate: (path: string) => 
   const t = copy[lang];
   return <main>
     <section className="hero">
-      <div className="hero-copy"><span className="eyebrow">{t.library}</span><h1>Urdu <span>9866</span></h1><p className="hero-lead">{t.intro}</p><p className="hero-sub">{t.introSub}</p><button className="primary-button" onClick={() => navigate("/syllabus")}>{t.browse}<Icon name="arrow"/></button></div>
+      <div className="hero-copy"><h1>Urdu <span>9866</span></h1><p className="hero-lead">{t.intro}</p><p className="hero-sub">{t.introSub}</p><button className="primary-button" onClick={() => navigate("/syllabus")}>{t.browse}<Icon name="arrow"/></button></div>
       <div className="hero-motif" aria-hidden="true"><div className="motif-ring"><span>علم</span></div><div className="motif-card motif-one">غزل</div><div className="motif-card motif-two">افسانہ</div></div>
     </section>
     <section className="section-wrap home-sections"><div className="section-heading"><div><span className="section-kicker">{t.syllabus}</span><h2>{t.sections}</h2></div><span className="section-count">02</span></div><SectionCards lang={lang} navigate={navigate}/></section>
